@@ -106,11 +106,11 @@ const DashboardApp = () => {
               <form style={styles.form} name="searchForm">
   <div>
     <label style={styles.label } htmlFor="experience">Experience yrs:</label>
-    <input type="text" id="experience" name="yearsOfExperience" placeholder="Enter years of experience" style={styles.input} />
+    <input type="text" id="experience" name="yearsOfExperience" placeholder="Years of Experience" style={styles.input} />
   </div>
   <div>
     <label style={styles.label } htmlFor="availability">Availability:</label>
-    <input type="text" id="availability" name="availability" placeholder="Enter availability (e.g., weekdays)" style={styles.input} />
+    <input type="text" id="availability" name="availability" placeholder="Availability(eg.weekdays)" style={styles.input} />
   </div>
   <div>
     <label style={styles.label } htmlFor="servicesOffered">Services Offered:</label>
@@ -122,7 +122,7 @@ const DashboardApp = () => {
   </div>
   <div>
     <label style={styles.label } htmlFor="interestsAndHobbies">Interests and Hobbies:</label>
-    <input type="text" id="interestsAndHobbies" name="interestsAndHobbies" placeholder="Enter interests and hobbies" style={styles.input} />
+    <input type="text" id="interestsAndHobbies" name="interestsAndHobbies" placeholder="Interests & Hobbies" style={styles.input} />
   </div>
   <div>
     <label style={styles.label } htmlFor="age">Age:</label>
@@ -148,6 +148,9 @@ const DashboardApp = () => {
           <Rprofile mydetails={mydetails}/>
         </div>
       </div>
+      <footer style={styles.footer}>
+                 <p>&copy; 2024 Meet My Helper. All rights reserved.</p>
+            </footer>
     </div>
   );
 }
@@ -156,7 +159,8 @@ const styles = {
   maincont: {
     display: 'flex',
     flexDirection: 'column',
-    minHeight: '100vh',
+    height: '100vh',
+    width: '100%',
   },
   nav: {
     display: 'flex',
@@ -182,15 +186,16 @@ const styles = {
     width: '100%',
     margin: 'auto',
     height: '10vh',
-    backgroundColor: 'red',
+    backgroundColor: '#97a2bd',
   },
   dashcont: {
-    border: '1px solid red',
-    backgroundColor: 'yellow',
+    // border: '1px solid red',
+    // backgroundColor: 'yellow',
     flex: 1, // Take up the remaining space
-    marginTop: '10px',
+    // marginTop: '10px',
     height: '80vh',
     width: '100%',
+    
   },
   rprofile: {
     display: 'flex',
@@ -211,8 +216,10 @@ const styles = {
     margin: 'auto',
   },
   abovecont: {
-    backgroundColor: 'green',
-    height: '20vh',
+    backgroundColor: '#97a2bd',
+    height: '25vh',
+    marginBottom: '20px',
+    marginTop: '20px',
   },
   form: {
     display: 'flex',
@@ -220,6 +227,8 @@ const styles = {
     alignItems: 'center',
     height: '100%',
     flexWrap: 'wrap',
+    // backgroundColor: '#6b7385',
+    backgroundColor: '#97a2bd',
   },
   input: {
     padding: '10px',
@@ -259,6 +268,12 @@ const styles = {
     fontSize: '20px',
     color: 'black',
     marginRight: '10px',
+  },
+  footer: {
+    backgroundColor: '#333',
+    color: 'white',
+    textAlign: 'center',
+    // padding: '3px',
   },
 
 }
