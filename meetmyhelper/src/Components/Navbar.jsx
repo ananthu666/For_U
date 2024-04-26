@@ -1,51 +1,22 @@
 import React from 'react';
+import { NavLink,useNavigate } from 'react-router-dom'; // Import NavLink and navigate
+import { signOut } from 'firebase/auth';
+import { auth } from '../firebase_config';
+import { message } from 'antd';
+
 
 function Navbar() {
-  const styles = {
-    header: {
-      backgroundColor: '#333', // Adjust background color to your preference
-      display: 'flex',
-      justifyContent: 'space-between', // Distribute content horizontally
-      alignItems: 'center', // Align content vertically
-    //   padding: '1rem', // Add some padding for visual spacing
-    height: '80px',
-    },
-    title: {
-      margin: '0', // Remove default margin
-      padding: '0 1rem', // Add left and right padding
-      color: 'white', // Make title text white
-      textDecoration: 'none', // Remove underline from title (if applicable)
-    //   fontSize: '1.5rem', // Adjust font size as needed
-      fontWeight: 'bold', // Add boldness for emphasis
-    },
-    nav: { // Renamed "navv" for consistency
-      display: 'flex',
-      
-      justifyContent: 'space-between', // Distribute links evenly
-      alignItems: 'center', // Align link contents vertically
-      listStyle: 'none', // Remove bullet points from links
-      margin: 0, // Remove default margin
-      padding: 0, // Remove default padding
-    },
-    link: { // Style for individual links
-      color: 'white', // Make link text white
-      textDecoration: 'none', // Remove underline from links
-      fontSize: '1rem', // Adjust font size as needed
-      fontWeight: 'normal', // Use normal weight for links
-      padding: '0.5rem 1rem', // Add some padding for link hover effect
-      transition: 'color 0.3s ease', // Smooth color transition on hover
-    },
-    'link:hover': { // Styles applied on link hover
-      color: '#f1f1f1', // Lighter color on hover
-    },
-    ul: { // Style for
-        display: 'flex',
-        justifyContent: 'space-between', // Distribute links evenly
-        alignItems: 'center', // Align link contents vertically
-        listStyle: 'none', // Remove bullet points from links
-        margin: 0, // Remove default margin
-        padding: 0, // Remove default padding
-        },
+  const navigate = useNavigate(); // Get navigate function from the hook
+
+
+  const handleLogout = () => {
+    signOut(auth).then(() => {
+      message.success('Logout successful'); // Show success message
+    }).catch((error) => {
+      console.error(error); //
+    });
+
+    navigate('/');
   };
 
   return (
@@ -55,11 +26,10 @@ function Navbar() {
       </div>
       <nav style={styles.nav}>
         <ul style={styles.ul}>
-          <li><a href="/about" style={styles.link}>About</a></li>
-          <li><a href="/services" style={styles.link}>Services</a></li>
-          <li><a href="/contact" style={styles.link}>Contact</a></li>
-          <li><a href="/" style={styles.link}>Login</a></li>
-          
+          <li><NavLink to="/about" style={styles.link} activeStyle={styles.activeLink}>About</NavLink></li>
+          <li><NavLink to="/services" style={styles.link} activeStyle={styles.activeLink}>Services</NavLink></li>
+          <li><NavLink to="/contact" style={styles.link} activeStyle={styles.activeLink}>Contact</NavLink></li>
+          {/* <li><button onClick={handleLogout} style={styles.link}>Logout</button></li> */}
         </ul>
       </nav>
     </header>
@@ -67,3 +37,44 @@ function Navbar() {
 }
 
 export default Navbar;
+
+const styles = {
+  header: {
+    backgroundColor: '#333',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    height: '80px',
+  },
+  title: {
+    margin: '0',
+    padding: '0 1rem',
+    color: 'white',
+    textDecoration: 'none',
+    fontWeight: 'bold',
+  },
+  nav: {
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    listStyle: 'none',
+    margin: 0,
+    padding: 0,
+  },
+  link: {
+    color: 'white',
+    textDecoration: 'none',
+    fontSize: '1rem',
+    fontWeight: 'normal',
+    padding: '0.5rem 1rem',
+    transition: 'color 0.3s ease',
+  },
+  activeLink: {
+    color: 'lightblue', // Change color for active link
+  },
+  ul: {
+    display: 'flex',
+    listStyle: 'none',
+    marginRight: '1rem',
+  },
+};

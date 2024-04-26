@@ -4,6 +4,7 @@ import {database} from '../firebase_config';
 import { getAuth,signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 import { useNavigate } from "react-router";
+import { NavLink } from 'react-router-dom';
 
 
 const Login = () => {
@@ -93,7 +94,7 @@ const Login = () => {
                     
                 </button>
                 <div className="sign-up" style={styles.signUp}>
-                    <p>Don t have an account? <a href="/register" style={styles.signUpLink}>Sign up</a></p>
+                <p>Don't have an account? <NavLink to="/register" style={styles.signUpLink}>Sign up</NavLink></p>
                 </div>
             </section>
             <footer style={styles.footer}>
@@ -198,4 +199,13 @@ const styles = {
         justifyContent: 'center',
         alignItems: 'center',
     },
+    ul:{
+        display: 'flex',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        listStyle: 'none',
+        margin: 0,
+        padding: 0,
+    },
+    
 };
