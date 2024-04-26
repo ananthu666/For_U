@@ -1,5 +1,5 @@
 
-import CarereceiverProfile from '../Components/Care_receiver_profile';
+import CarereceiverProfile from '../../Components/Receiver/Care_receiver_profile';
 
 import { useLocation } from 'react-router-dom';
 const Carereciever = ()=>

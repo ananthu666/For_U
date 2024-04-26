@@ -1,33 +1,72 @@
 import React, { useState } from 'react';
-import { database } from '../firebase_config';
+import { database } from '../../firebase_config';
 import { collection, setDoc,doc } from 'firebase/firestore';
-
+import { UploadOutlined } from '@ant-design/icons';
+import { Button, Upload,message } from 'antd';
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { useNavigate } from 'react-router';
 
 const CaregiverProfile = ({eandp}) => {
-  const [caretaker, setCaretaker] = useState({});
+  
   const [eandp1] = useState(eandp);
-  const addcaretaker = async() => {
+  const [fileList, setFileList] = useState([]);
+  const navigate = useNavigate();
+  console.log('endp',eandp1);
+  const handleFileChange = (info) => {
+    let newFileList = [...info.fileList];
+    newFileList = newFileList.slice(-1); // Limit to only one file
+    setFileList(newFileList);
+  };
+  const addcaretaker = async (event) => {
+    event.preventDefault(); 
     const formvalues = document.querySelectorAll('input, textarea');
     const data = {};
+    const storage = getStorage();
+    if(fileList.length > 0)
+    {
+      try
+      {
+        const storageRef = ref(storage, `images/${eandp1.state.data.email}`);
+        await uploadBytes(storageRef, fileList[0].originFileObj);
+        const imageUrl = await getDownloadURL(storageRef);
+        
+        data['imageUrl'] = imageUrl;
+        console.log("imageUrl",imageUrl);
+
+      }
+      catch(e)
+      {
+        console.error("Error uploading image: ", e);
+      }
+
+    }
     formvalues.forEach((input) => {
-      // Use the 'name' attribute as the key for the data object
+      if(input.name.length > 0)
       data[input.name] = input.value;
-    });
-    formvalues.forEach((textarea) => {
-      // Use the 'name' attribute as the key for the data object
+  });
+  formvalues.forEach((textarea) => {
+    // Use the 'name' attribute as the key for the data object
+    if(textarea.name.length > 0)
       data[textarea.name] = textarea.value;
     });
     data['email']=eandp1.state.data.email;
     data['password']=eandp1.state.data.password;
-    setCaretaker(data);
-    console.log(caretaker);
+    
+    console.log("data",data);
     try
     {
       const reff=collection(database, "caretakers");
     const documentRef = doc(reff, eandp1.state.data.email);
-    const docRef =await setDoc(documentRef, caretaker);
+    const docRef =await setDoc(documentRef, data);
     console.log("Document written with ID: ", docRef);
+    if(documentRef)
+    {
+      message.success("Profile created successfully");
+      navigate("/");
+      
+
     }
+  }
     catch(e)
     {
       console.error("Error adding document: ", e);
@@ -42,23 +81,11 @@ const CaregiverProfile = ({eandp}) => {
   return (
     <>
       <section className="signup-container" style={styles.container}>
-        <h2 className="subheading" style={styles.subheading}>
-          Caregiver's Profile
-        </h2>
-        <div style={styles.rl}>
-          <div className="left-column">
-            <div className="photo-upload" style={styles.photoUpload}>
-              <label htmlFor="photo-input">
-                <i className="fas fa-camera"></i>
-              </label>
-              <input
-                type="file"
-                id="photo-input"
-                name="photo"
-                accept="image/*"
-                style={styles.photoInput}
-              />
-            </div>
+       
+          
+        <div style={styles.outercont}>
+          <div className="left-column" style={styles.rl}>
+            
             <form className="signup-form" style={styles.form}>
               <input
                 type="text"
@@ -91,33 +118,69 @@ const CaregiverProfile = ({eandp}) => {
                 placeholder="Email"
                 style={styles.input}
               /> */}
-              <input
-                type="number"
-                name="yearsOfExperience"
-                placeholder="Years of Experience"
-                style={styles.input}
-              />
-              <input
-                type="text"
-                name="languagesSpoken"
-                placeholder="Languages Spoken"
-                style={styles.input}
-              />
-              <input
-                type="text"
-                name="availability"
-                placeholder="Availability"
-                style={styles.input}
-              />
+                <input
+                  type="number"
+                  name="yearsOfExperience"
+                  placeholder="Years of Experience"
+                  style={styles.input}
+                />
+                <input
+                  type="text"
+                  name="languagesSpoken"
+                  placeholder="Languages Spoken"
+                  style={styles.input}
+                />
+                <input
+                  type="text"
+                  name="availability"
+                  placeholder="Availability"
+                  style={styles.input}
+                />
             </form>
           </div>
-          <div className="right-column">
+          <div className="middlecol" style={styles.middleColumn}>
             <form className="signup-form" style={styles.form}>
               <textarea
                 name="clientFocus"
                 placeholder="Client Focus"
                 style={styles.textarea}
               ></textarea>
+              <textarea
+                name="servicesOffered"
+                placeholder="Services Offered"
+                style={styles.textarea}
+              ></textarea>
+              <textarea
+                name="education"
+                placeholder="Education"
+                style={styles.textarea}
+              ></textarea>
+              <textarea
+                name="qualification"
+                placeholder="Qualification"
+                style={styles.textarea}
+              ></textarea>
+              <textarea
+                name="clientFocus"
+                placeholder="Client Focus"
+                style={styles.textarea}
+              ></textarea>
+              <Upload
+          action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+          listType="picture"
+          defaultFileList={[...fileList]}
+          className="upload-list-inline"
+          onChange={handleFileChange}
+    
+        > 
+          <Button icon={<UploadOutlined />}>Upload profile pic</Button>
+        </Upload>
+            </form>
+
+          
+        </div>
+          <div className="right-column">
+            <form className="signup-form" style={styles.form}>
               <textarea
                 name="servicesOffered"
                 placeholder="Services Offered"
@@ -148,12 +211,12 @@ const CaregiverProfile = ({eandp}) => {
                 placeholder="Personal Interests and Hobbies"
                 style={styles.textarea}
               ></textarea>
+        <button type="submit" style={styles.button} onClick={(event) => addcaretaker(event)}>
+  Create Profile
+</button>
             </form>
           </div>
         </div>
-        <button type="submit" style={styles.button} onClick={addcaretaker}>
-          Create Profile
-        </button>
       </section>
     </>
   );
@@ -161,16 +224,29 @@ const CaregiverProfile = ({eandp}) => {
 
 const styles = {
   container: {
-    padding: '2rem',
-    backgroundColor: '#f9f9f9',
+    // padding: '2rem',
+    // backgroundColor: 'red',
+    // backgroundColor: '#f9f9f9',
     gap: '2rem',
     width: '100%',
-    // height: '100%',
+    height: '100%',
     justifyContent: 'center',
     alignItems: 'center',
+    // width: '100%',
+    marginTop: '2rem',
+    
+  },
+  outercont: {
+    display: 'flex',
+    width: '90%',
+    justifyContent: 'space-evenly',
+    alignItems: 'center',
+    gap: '2rem',
+
   },
   leftColumn: {
-    flex: 1,
+    backgroundColor:"yellow"
+    
   },
   rightColumn: {
     flex: 1,
@@ -178,6 +254,8 @@ const styles = {
   subheading: {
     color: '#333',
     fontSize: '2rem',
+    
+
   },
   photoUpload: {
     margin: '1rem 0',
@@ -195,7 +273,7 @@ const styles = {
     border: '1px solid #ccc',
     borderRadius: '5px',
     width: '400px',
-    height: '3.7vh',
+    height: '4vh',
     backgroundColor: 'white',
     color: 'black',
     fontWeight: 'bold',
@@ -212,6 +290,7 @@ const styles = {
     color: 'black',
     fontWeight: 'bold',
     fontSize: '20px',
+    height:"4vh"
   },
   button: {
     margin: '1rem 0',

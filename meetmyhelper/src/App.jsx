@@ -6,8 +6,12 @@ import Signup from './Pages/Signup'
 import About from './Pages/About'
 import Services from './Pages/Services'
 import Choice from './Pages/Choice'
-import Care_taker from './Pages/Cgp_signup'
-import Care_reciever from './Pages/Crp_signup'
+import Care_taker from './Pages/Giver/Cgp_signup'
+import Care_reciever from './Pages/Reciever/Crp_signup'
+import Rdash from './Pages/Reciever/Receiver_dash'
+import Gdash from './Pages/Giver/Giver_dash'
+import GiverView from './Pages/Reciever/Giver_View_for_reciever'
+
 function App() {
   
   
@@ -22,6 +26,9 @@ function App() {
       <Route path="/choices" element={<Choice/>}></Route>
       <Route path="/cgp" element={<Care_taker/>}></Route>
       <Route path="/crp" element={<Care_reciever/>}></Route>
+      <Route path="/rdash" element={<Rdash/>}></Route>
+      <Route path="/gdash" element={<Gdash/>}></Route>
+      <Route path="/gviewforr" element={<GiverView/>}></Route>
 
       
     </Routes>

@@ -1,13 +1,13 @@
 
 
-import CaregiverProfile from "../Components/Care_giver_profile";
+import CaregiverProfile from "../../Components/Giver/Care_giver_profile";
 import { useLocation } from 'react-router-dom';
 const Ctp=()=>
 {
     const { state } = useLocation();
     // console.log("state1", state);
     return(
-        <div>
+        <div style={styles.outercont}>
            <nav style={styles.nav}>
            Meet My Helper
            </nav>
@@ -29,20 +29,36 @@ const styles =
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#cbc8cf',
+        // backgroundColor: 'grey',
+
         padding: '20px',
         height: '6vh',
         color:"black",
-        fontSize: '50px',
+        fontSize: '40px',
         fontWeight: 'bold',
         fontFamily: 'Arial',
+        position: 'fixed',
+        top:'0',
+        width: '100%',
+
     },
     caregiver: {
         display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        // height: '94vh',
+        width: '100%',
+        height: '80%',
+        overflow: 'scroll',
+        // position:'absolute',
+        
+        marginTop: '80px',
+        scrollbarWidth: 'none',
+        
+
+        
+        
+
         // backgroundColor: 'red',
+        
 
     },
     footer: {
@@ -50,6 +66,16 @@ const styles =
         color: 'white',
         textAlign: 'center',
         padding: '20px',
+        position : 'fixed',
+        bottom:"0",
+        width: '100%',
+    },
+    outercont: {
+        display: 'flex',
+        flexDirection: 'column',
+        height: '100%',
+        // backgroundColor: 'blue',
+
     },
 
 }

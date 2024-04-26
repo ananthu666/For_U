@@ -1,8 +1,63 @@
 import React from 'react';
 import Navbar from '../Components/Navbar';
+import {database} from '../firebase_config';
+import { getAuth,signInWithEmailAndPassword } from 'firebase/auth';
+import { collection, getDocs } from 'firebase/firestore';
+import { useNavigate } from "react-router";
 
 
 const Login = () => {
+    const navigate = useNavigate();
+    const handlelogin = (event) => {
+        event.preventDefault(); 
+        console.log("login");
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+        if (!email || !password) {
+            document.getElementById('error-message').innerText = 'Please enter both email and password';
+            return;
+        }
+        else
+        {
+            signInWithEmailAndPassword(getAuth(), email, password)
+            .then( async(userCredential) => {
+                // Signed in 
+                const user = userCredential.user;
+                console.log(user);
+                if(user.accessToken)
+                {
+                    const data={email: email, password: password}
+                    console.log("data",data);
+                    try {
+                        const querySnapshot = await getDocs(collection(database, 'carereceivers'));
+                        const ids = querySnapshot.docs.map(doc => doc.id);
+                        console.log("ids",ids);
+                        if(ids.includes(email))
+                        {
+                            navigate('/rdash',{state:{email}});
+                            
+                        }
+                        else
+                        {
+                            
+                            navigate('/gdash',{state:{email}});
+                        }
+                    } 
+                    catch(e){
+                        console.error("Error adding document: ", e);
+                    }
+                    
+                }
+            })
+            .catch(() => {
+                // const errorCode = error.code;
+                const errorMessage = "invalid credentials";
+                document.getElementById('error-message').innerText = errorMessage;
+            });
+        }
+
+    }
+
 
     return (
         <>
@@ -31,7 +86,7 @@ const Login = () => {
                     <div className="forgot-password">
                         <a href="forgot.html" style={styles.forgotPassword}><i className="fas fa-question-circle"></i> Forgot Password?</a>
                     </div>
-                    <button type="submit" style={styles.button}>Login</button>
+                    <button type='submit' onClick={handlelogin} style={styles.button}>Login</button>
                 </form>
                 <button className="google-btn" onClick={() => window.location.href = 'choice.html'} style={styles.googleButton}>
                     <i className="fab fa-google"></i> Sign in with Google

@@ -1,35 +1,67 @@
 import React from 'react';
 import { useState } from 'react';
-import { database } from '../firebase_config';
+import { database } from '../../firebase_config';
 import { collection, setDoc,doc } from 'firebase/firestore';
 import { message } from 'antd';
+import { UploadOutlined } from '@ant-design/icons';
+import { Button, Upload } from 'antd';
 import { useNavigate } from 'react-router';
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
 const CarereceiverProfile = ({eandp}) => {
   const navigate = useNavigate();
-  const [Carereceiver, setCarereceiver] = useState({});
+  
   const [eandp1] = useState(eandp);
- 
+  const [fileList, setFileList] = useState([]);
 
-  const handleOnClick = () => {
+  const handleFileChange = (info) => {
+    let newFileList = [...info.fileList];
+    newFileList = newFileList.slice(-1); // Limit to only one file
+    setFileList(newFileList);
+  };
+  const handleOnClick = async() => {
     // get all values from the form
     const formvalues = document.querySelectorAll('input, textarea');
     const data = {};
     formvalues.forEach((input) => {
       // Use the 'name' attribute as the key for the data object
-      data[input.name] = input.value;
+      if(input.name.length>0)
+      data[input.name] = input.value.length>0?input.value:"abc";
+      
+      
     });
     formvalues.forEach((textarea) => {
-      // Use the 'name' attribute as the key for the data object
-      data[textarea.name] = textarea.value;
+      if(textarea.name.length>0)
+      data[textarea.name] = textarea.value.length>0?textarea.value:"abc";
+      
     });
+    const storage = getStorage();
+    if(fileList.length > 0)
+    {
+      try
+      {
+        const storageRef = ref(storage, `images/${eandp1.state.data.email}`);
+        await uploadBytes(storageRef, fileList[0].originFileObj);
+        const imageUrl = await getDownloadURL(storageRef);
+        
+        data['imageUrl'] = imageUrl;
+        console.log("imageUrl",imageUrl);
+
+      }
+      catch(e)
+      {
+        console.error("Error uploading image: ", e);
+      }
+
+    }
     data['email']=eandp1.state.data.email;
     data['password']=eandp1.state.data.password;
-    setCarereceiver(data); 
-    console.log("Carereceiver",Carereceiver);
+    
+    
     try{
+      console.log("data",data);
       const reff=collection(database, "carereceivers");
       const documentRef = doc(reff, eandp1.state.data.email);
-      const docRef = setDoc(documentRef, Carereceiver);
+      const docRef = setDoc(documentRef, data);
       console.log("Document written with ID: ", docRef);
       message.success("Profile created successfully");
       navigate("/");
@@ -43,9 +75,16 @@ const CarereceiverProfile = ({eandp}) => {
   return (
     <div style={styles.profileContainer}>
       <div style={styles.leftColumn}>
-        <div style={styles.profilePicContainer}>
-          <img src="profile-picture.jpg" alt="Profile Picture" style={styles.profilePic} />
-        </div>
+          <Upload
+          action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+          listType="picture"
+          defaultFileList={[...fileList]}
+          className="upload-list-inline"
+          onChange={handleFileChange}
+
+        > 
+          <Button icon={<UploadOutlined />}>Upload</Button>
+        </Upload>
       </div>
       <div style={styles.midColumn}>
         <div style={styles.profileDetails}>
@@ -257,7 +296,8 @@ const styles = {
     marginTop: '10px',
     // transition: 'background-color 0.3s',
     
-  },
+  },  
+
 };
 
 
