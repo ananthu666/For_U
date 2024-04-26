@@ -1,5 +1,5 @@
 import { useLocation } from 'react-router-dom';
-import Giverprofile from '../../Components/Giver/GiverProfile';
+import Giverprofile from '../../Components/Giver/Giverprofile';
 import Giverreviews from '../../Components/Giver/GiverReviews';
 import { auth } from '../../firebase_config'; 
 import { useEffect, useState } from 'react';
