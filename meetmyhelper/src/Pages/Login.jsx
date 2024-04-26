@@ -93,7 +93,7 @@ const Login = () => {
                     
                 </button>
                 <div className="sign-up" style={styles.signUp}>
-                    <p>Don't have an account? <a href="/register" style={styles.signUpLink}>Sign up</a></p>
+                    <p>Don t have an account? <a href="/register" style={styles.signUpLink}>Sign up</a></p>
                 </div>
             </section>
             <footer style={styles.footer}>
