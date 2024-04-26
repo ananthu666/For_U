@@ -1,10 +1,8 @@
 import { useLocation } from 'react-router-dom';
-import Giverprofile from '../../Components/Giver/Giverprofile';
+import Giverprofile from '../../Components/Giver/GiverProfile';
+
 import Giverreviews from '../../Components/Giver/GiverReviews';
-import { auth } from '../../firebase_config'; 
-import { useEffect, useState } from 'react';
-import { database } from '../../firebase_config';
-import { collection, getDocs, query, where, onSnapshot } from 'firebase/firestore';
+import { useState } from 'react';
 
 
 
