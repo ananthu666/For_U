@@ -27,9 +27,11 @@ const styles =
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        padding: '2rem',
+        // padding: '2rem',
+        paddingTop: '2rem',
+        paddingLeft: '2rem',
         // margin_left: '10rem',
-        width: '100%',
+        width: '90%',
         
 
     },
