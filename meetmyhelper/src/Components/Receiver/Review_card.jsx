@@ -46,7 +46,8 @@ const styles = {
         justifyContent: 'center',
         width: '90%',
         // margin: 'auto',
-        backgroundColor: '#f5f5f5',
+        // backgroundColor: '#f5f5f5',
+        backgroundColor: 'transparent',
         borderRadius: '10px',
         padding: '20px',
         height: 'auto',
@@ -63,6 +64,7 @@ const styles = {
         width: '100%',
         marginBottom: '20px',
         borderBottom: '4px solid #ccc',
+        color:"#64eddf"
     },
     reviewerInfo: {
         display: 'flex',
@@ -71,16 +73,22 @@ const styles = {
 
     },
     reviewerPhoto: {
-        width: '80px',
-        height: '70px',
+        width: '90px',
+        height: '90px',
         borderRadius: '50%',
         marginRight: '10px',
+        position : 'relative',
+        top: '60%',
+        left:'-80%'
 
     },
     reviewerName: {
         fontSize: '40px',
         fontWeight: 'bold',
         marginLeft: '30px',
+        position : 'relative',
+        // top: '60%',
+        left: '-20%',
     },
     rating: {
         fontSize: '44px',

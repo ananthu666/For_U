@@ -2,14 +2,14 @@ import React from 'react';
 import { Button } from 'antd';
 import { useNavigate } from "react-router";
 
-const Review_profile = ({ giverdet, myem }) => {
+const Review_profile = ({ giverdet, myem ,mydet}) => {
     const navigate = useNavigate();
-
+    
     return (
         <div style={styles.outer}>
             <div style={styles.nameapo}>
                 <h1 style={styles.heading}>{giverdet.fullName}</h1>
-                <Button onClick={() => navigate('/appoint', { state: { myem, giverdetEmail: giverdet.email,giverdetimage:giverdet.imageUrl,giverdetname:giverdet.fullName } })} style={styles.abtn}>Assign CareTaker</Button>
+                <Button onClick={() => navigate('/appoint', { state: { myem,myname:mydet.name,myimage:mydet.imageurl ,giverdetEmail: giverdet.email,giverdetimage:giverdet.imageUrl,giverdetname:giverdet.fullName } })} style={styles.abtn}>Assign CareTaker</Button>
             </div>
             <div style={styles.imageBox}>
                 <img src={giverdet.imageUrl ? giverdet.imageUrl : "https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"} alt="Profile" style={styles.image} />

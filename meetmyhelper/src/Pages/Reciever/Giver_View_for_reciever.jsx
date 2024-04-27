@@ -4,7 +4,7 @@ import Show_reviews from '../../Components/Receiver/Show_reviews';
 
 const GiverView = () => {
     const { state } = useLocation();
-    console.log("state", state);
+    console.log("state>>>", state);
 
     if (!state || !state.e) {
         return (
@@ -19,7 +19,7 @@ const GiverView = () => {
     return (
         <div style={styles.maincont}>
            <div style={styles.detail}>
-            <Reviewprofile giverdet={giverDetails} myem={state.myemail}/>
+            <Reviewprofile giverdet={giverDetails} myem={state.myemail} mydet={state.mydet}/>
            </div>
            <div style={styles.review}>
            <Show_reviews myem={state.myemail} giverem={giverDetails.email}/> 

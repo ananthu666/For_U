@@ -87,7 +87,7 @@ const DashboardApp = () => {
   const togglerprof = () => {
     setShowProfile(!showProfile); // Toggle the state on button click
   }
-
+  
   return (
     <div style={styles.maincont}>
       <div>
@@ -139,7 +139,7 @@ const DashboardApp = () => {
             </div>
           </div>
           <div style={styles.tablecont}>
-          <RecieverTable tabdat={filtereddata.length!=0 ? filtereddata:recdata } myemail={state.email} />
+          <RecieverTable tabdat={filtereddata.length!=0 ? filtereddata:recdata } myemail={state.email} mydet={{name:mydetails.name,imageurl:mydetails.imageUrl}}/>
           
 
           </div>

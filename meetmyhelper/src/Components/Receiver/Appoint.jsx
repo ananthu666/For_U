@@ -1,7 +1,7 @@
 import background from '../../assets/apoint.jpg';
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import { collection, addDoc, getDocs, where } from 'firebase/firestore';
+import { collection, addDoc, query, where,onSnapshot } from 'firebase/firestore';
 import { database } from '../../firebase_config';
 import { message } from 'antd';
 import Loading from '../Loader';
@@ -9,15 +9,23 @@ import Loading from '../Loader';
 const Appoint = () => {
     const { state } = useLocation();
     const [apoints, setapoints] = useState([]);
+    console.log("ssss",state);
 
     const fetchapoints = async () => {
         try {
-            const querySnapshot = await getDocs(collection(database, 'appointments'), where("care_reciever_email", "==", state.myem));
-            const arr = [];
-            querySnapshot.forEach((doc) => {
-                arr.push(doc.data());
-            });
-            setapoints(arr);
+            const unsubscribe = onSnapshot(
+                query(collection(database, 'appointments'), where("care_reciever_email", "==", state.myem)),
+                (querySnapshot) => {
+                    const arr = [];
+                    querySnapshot.forEach((doc) => {
+                        arr.push(doc.data());
+                    });
+                    setapoints(arr);
+                }
+            );
+            
+            // Optionally, return the unsubscribe function if you want to stop listening to updates
+            return unsubscribe;
         } catch (e) {
             console.log(e);
         }
@@ -34,6 +42,8 @@ const Appoint = () => {
         typeOfWork: '',
         location: '',
         care_reciever_email: state.myem,
+        care_reciever_name: state.myname,
+        care_reciever_image: state.myimage,
         care_taker_email: state.giverdetEmail,
         request_accepted: false,
         request_rejected: false,

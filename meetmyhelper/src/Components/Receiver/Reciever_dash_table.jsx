@@ -2,9 +2,9 @@ import React from 'react';
 import { Table, Button } from 'antd';
 import { useNavigate } from "react-router";
 
-const Tab = ({ tabdat,myemail }) => {
+const Tab = ({ tabdat,myemail,mydet }) => {
   const navigate = useNavigate();
-  console.log("my",myemail);
+  // console.log("my",mydet);
   const columns = [
     {
       title: 'Full Name',
@@ -105,7 +105,7 @@ const Tab = ({ tabdat,myemail }) => {
 
   const Executemyfun = (e) => {
     console.log("hello", e);
-    navigate("/gviewforr", { state: { e ,myemail} });
+    navigate("/gviewforr", { state: { e ,myemail,mydet} });
   };
 
   console.log("tabdat", tabdat);

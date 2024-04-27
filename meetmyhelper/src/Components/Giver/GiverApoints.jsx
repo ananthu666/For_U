@@ -4,26 +4,27 @@ import { Button, Modal, Form, Input, Rate } from 'antd';
 import {database} from '../../firebase_config';
 import { collection, addDoc,getDocs,where,onSnapshot,query } from 'firebase/firestore';
 import Loader from '../Loader';
-import fam from '../../assets/fam.jpg';
+import GiverApointAccept from './GiverApointAccept';
+import supp from '../../assets/supp.png';
 
 const { TextArea } = Input;
 
-const GiverReviews = ({ giverem }) => {
+const GiverApoints = ({ giverem }) => {
     
     const [reviews,setreviews] = useState([]);
         console.log("giverem",giverem);
     
 
     
-    const fetchreviews = async() => {
+    const fetchapoints = async() => {
         try
         {
-            const q = query(collection(database, 'reviews'), where('giver_email', '==', giverem));
+            const q = query(collection(database, 'appointments'), where('care_taker_email', '==', giverem));
 
             const unsubscribe = await onSnapshot(q, (snapshot) => {
                 const arr = [];
                 snapshot.forEach((doc) => {
-                    arr.push(doc.data());
+                    arr.push({ id: doc.id, data: doc.data() });
                 });
                 console.log("------",arr);
                 setreviews(arr);
@@ -36,7 +37,7 @@ const GiverReviews = ({ giverem }) => {
         
     }
     useEffect(() => {
-        fetchreviews();
+        fetchapoints();
         
     }
     , []); // Empty dependency array
@@ -60,7 +61,7 @@ const GiverReviews = ({ giverem }) => {
             ) : (
                 reviews.map((review, index) => (
                     <div key={index} style={styles.card}>
-                        <Review_card review={review} />
+                        <GiverApointAccept review={review}/>
                     </div>
                 ))
             )}
@@ -69,7 +70,7 @@ const GiverReviews = ({ giverem }) => {
     );
 }
 
-export default GiverReviews;
+export default GiverApoints;
 
 const styles = {
     outercont: {
@@ -77,29 +78,27 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '76vh',
-        width: '93%',
-        backgroundColor: '#fff',
+        height: '80vh',
+        width: '100%',
+        // backgroundColor: '#fff',
+        // backgroundColor: 'red',
         borderRadius: '10px',
         padding: '20px',
-        marginBottom: '20px',
-        margin: '20px',
+        // marginBottom: '20px',
+        marginTop: '30px',
         boxShadow: '0 0 20px #ccc',
+        backgroundImage: `url(${supp})`,
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+
     },
     innercont: {
         width: '98%',
         height: '100%',
         overflowY: 'scroll',
         scrollbarWidth: 'none',
-        // backgroundColor:"red",
-        backgroundImage: `url(${fam})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        
-
-
-        
+        backgroundColor:"transparent"
     },
     card: {
         display: 'flex',
@@ -108,7 +107,7 @@ const styles = {
         justifyContent: 'center',
         width: '90%',
         margin: 'auto',
-        backgroundColor: 'transparent',
+        backgroundColor:"transparent",
         // backgroundColor: '#f5f5f5',
         borderRadius: '10px',
         padding: '20px',
@@ -121,7 +120,7 @@ const styles = {
         flexDirection: 'row',
     },
     btn: {
-        // backgroundColor: 'green',
+        backgroundColor: 'green',
         color: 'white',
         borderRadius: '50%',
         marginLeft: '20px',
@@ -172,7 +171,6 @@ const styles = {
         height: '100%',
         width: '100%',
         backgroundColor: '#fff',
-        // backgroundColor: 'transparent',
         borderRadius: '10px',
         padding: '20px',
         marginBottom: '20px',
