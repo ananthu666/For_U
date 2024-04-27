@@ -124,22 +124,22 @@ const CaregiverProfile = ({eandp}) => {
                   placeholder="Years of Experience"
                   style={styles.input}
                 />
-                <input
-                  type="text"
-                  name="languagesSpoken"
-                  placeholder="Languages Spoken"
-                  style={styles.input}
-                />
-                <input
-                  type="text"
-                  name="availability"
-                  placeholder="Availability"
-                  style={styles.input}
-                />
+              <input
+                type="text"
+                name="languagesSpoken"
+                placeholder="Languages Spoken"
+                style={styles.input}
+              />
             </form>
           </div>
           <div className="middlecol" style={styles.middleColumn}>
             <form className="signup-form" style={styles.form}>
+              <input
+                type="text"
+                name="availability"
+                placeholder="Availability"
+                style={styles.input}
+              />
               <textarea
                 name="clientFocus"
                 placeholder="Client Focus"
@@ -155,42 +155,7 @@ const CaregiverProfile = ({eandp}) => {
                 placeholder="Education"
                 style={styles.textarea}
               ></textarea>
-              <textarea
-                name="qualification"
-                placeholder="Qualification"
-                style={styles.textarea}
-              ></textarea>
-              <textarea
-                name="clientFocus"
-                placeholder="Client Focus"
-                style={styles.textarea}
-              ></textarea>
-              <Upload
-          action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
-          listType="picture"
-          defaultFileList={[...fileList]}
-          className="upload-list-inline"
-          onChange={handleFileChange}
-    
-        > 
-          <Button icon={<UploadOutlined />}>Upload profile pic</Button>
-        </Upload>
-            </form>
-
-          
-        </div>
-          <div className="right-column">
-            <form className="signup-form" style={styles.form}>
-              <textarea
-                name="servicesOffered"
-                placeholder="Services Offered"
-                style={styles.textarea}
-              ></textarea>
-              <textarea
-                name="education"
-                placeholder="Education"
-                style={styles.textarea}
-              ></textarea>
+              
               <textarea
                 name="qualification"
                 placeholder="Qualification"
@@ -201,6 +166,14 @@ const CaregiverProfile = ({eandp}) => {
                 placeholder="Accommodation"
                 style={styles.textarea}
               ></textarea>
+            </form>
+
+          
+        </div>
+          <div className="right-column">
+            <form className="signup-form" style={styles.form}>
+             
+              
               <textarea
                 name="allergies"
                 placeholder="Allergies (if any)"
@@ -211,12 +184,27 @@ const CaregiverProfile = ({eandp}) => {
                 placeholder="Personal Interests and Hobbies"
                 style={styles.textarea}
               ></textarea>
+              <div style={styles.upbtn}>
+
+              <Upload
+              action="https://660d2bd96ddfa2943b33731c.mockapi.io/api/upload"
+              listType="picture"
+              defaultFileList={[...fileList]}
+              className="upload-list-inline"
+              onChange={handleFileChange}
+
+
+              > 
+              <Button  icon={<UploadOutlined />}>Upload profile pic</Button>
+              </Upload >
+              </div>
         <button type="submit" style={styles.button} onClick={(event) => addcaretaker(event)}>
   Create Profile
 </button>
             </form>
           </div>
         </div>
+        
       </section>
     </>
   );
@@ -312,6 +300,28 @@ const styles = {
     justifyContent: 'center',
     alignItems: 'center',
     gap: '10rem',
+  },
+  middleColumn: {
+    display: 'flex',
+    width: '100%',
+    justifyContent: 'center',
+    alignItems: 'center',
+    gap: '10rem',
+  },
+  upbtn: {
+    margin: '1rem 0',
+    padding: '0.5rem',
+    backgroundColor: '#cedcf2',
+    color: 'blue',
+    border: 'none',
+    borderRadius: '5px',
+    cursor: 'pointer',
+    fontWeight: 'bold',
+    textDecoration: 'none',
+    textAlign: 'center',
+    width: '400px',
+    fontSize: '25px',
+    
   },
 };
 
