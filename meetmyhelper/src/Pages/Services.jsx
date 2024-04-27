@@ -35,6 +35,9 @@ const Services = () => {
           <p className="service-description" style={styles.serviceDescription}>Our skilled caregivers are trained professionals dedicated to providing top-quality care and support.</p>
         </div>
       </section>
+      <footer style={styles.footer}>
+                <p>&copy; 2024 Meet My Helper. All rights reserved.</p>
+            </footer>
     </>
   );
 }
@@ -55,7 +58,7 @@ const styles = {
     serviceBox: {
       display: 'inline-block',
       width: '320px',
-      margin: '20px',
+      margin: '10px',
       backgroundColor: '#fff',
       borderRadius: '10px',
       boxShadow: '0 0 10px rgba(0, 0, 0, 0.1)',
@@ -79,5 +82,18 @@ const styles = {
       margin: '0 20px 20px',
       fontSize: '16px',
     },
+    footer: {
+      backgroundColor: '#cef0ef',
+      color: 'black',
+      textAlign: 'center',
+      // padding: '20px',
+      position: 'absolute',
+      bottom: '0',
+      width: '100%',
+      // height:"20px",
+      margin: '0',
+      justifyContent: 'center',
+      alignItems: 'center',
+  },
   };
   

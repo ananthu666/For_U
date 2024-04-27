@@ -117,7 +117,12 @@ const Tab = ({ tabdat,myemail }) => {
         dataSource={tabdat}
         scroll={{
           x: 1500,
-          y: 300,
+          y: 200,
+        }}
+        pagination={{
+          position: ["bottomRight"],
+          pageSize: 4,
+          showSizeChanger: false,
         }}
       />
     </div>

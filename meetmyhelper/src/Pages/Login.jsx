@@ -187,8 +187,8 @@ const styles = {
         display: 'inline-block',
     },
     footer: {
-        backgroundColor: '#333',
-        color: '#fff',
+        backgroundColor: '#cef0ef',
+        color: 'black',
         textAlign: 'center',
         // padding: '20px',
         position: 'absolute',

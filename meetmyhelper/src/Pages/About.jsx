@@ -15,6 +15,9 @@ const about=()=>{
                 <img src={hand} alt="" width={350} height={350} style={{borderRadius:"700px" , padding:"10px"}}/>
             </div>
         </div>
+        <footer style={styles.footer}>
+                <p>&copy; 2024 Meet My Helper. All rights reserved.</p>
+            </footer>
         </>
     )
 }
@@ -72,6 +75,19 @@ const styles =
         
        
        margin: '0 0 0 0'
-    }
+    },
+    footer: {
+        backgroundColor: '#cef0ef',
+        color: 'black',
+        textAlign: 'center',
+        // padding: '20px',
+        position: 'absolute',
+        bottom: '0',
+        width: '100%',
+        // height:"20px",
+        margin: '0',
+        justifyContent: 'center',
+        alignItems: 'center',
+    },
 
 }

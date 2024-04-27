@@ -1,10 +1,20 @@
 import React from 'react';
+import { Button } from 'antd';
+import { useNavigate } from "react-router";
 
 const Review_profile = ({giverdet}) => {
+    const navigate = useNavigate();
     console.log("giverdet====",giverdet);
     return (
         <div style={styles.outer}>
+            <div style={styles.nameapo}>
+               
             <h1 style={styles.heading}>{giverdet.fullName}</h1>
+            <div style={styles.apobtn}>
+            <Button onClick={() => navigate('/appoint')} style={styles.abtn}>Assign CareTaker</Button>
+
+            </div>
+            </div>
             <div style={styles.imageBox}>
                 <img src={giverdet.imageUrl?giverdet.imageUrl:"https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"} alt="Profile" style={styles.image} />
             </div>
@@ -93,6 +103,40 @@ const styles = {
         borderRadius: '80%',
         height: '150px',
     },
+    nameapo: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        width: '30%',
+        marginBottom: '10px',
+    },
+    apobtn: {
+        display: 'flex',
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'space-between',
+        // width: '10%',
+        // marginBottom: '10px',
+        position: 'relative',
+        left: '10px',
+        bottom: '20px',
+        
+    },
+    abtn: {
+        backgroundColor: 'grey',
+        color: 'white',
+        borderRadius: '9px',
+        padding: '5px',
+        marginTop: '10px',
+        fontSize: '14px',
+        fontWeight: 'bold',
+        // paddingBottom: '32px',
+        height: '40px',
+        width: '100%',
+        
+    }
+
 };
 
 export default Review_profile;
