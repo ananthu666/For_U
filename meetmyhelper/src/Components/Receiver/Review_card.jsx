@@ -79,7 +79,7 @@ const styles = {
         marginRight: '10px',
         position : 'relative',
         top: '60%',
-        left:'-80%'
+        left:'-50%'
 
     },
     reviewerName: {

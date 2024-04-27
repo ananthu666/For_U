@@ -50,7 +50,8 @@ const styles = {
         justifyContent: 'center',
         height: '80vh',
         width: '80%',
-        backgroundColor: '#fff',
+        // backgroundColor: '#fff',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
         borderRadius: '10px',
         padding: '20px',
         marginBottom: '20px',
@@ -112,6 +113,8 @@ const styles = {
         fontWeight: 'bold',
         height: '40px',
         width: '40%',
+        cursor: 'pointer',
+        marginLeft: '70px',
     }
 };
 

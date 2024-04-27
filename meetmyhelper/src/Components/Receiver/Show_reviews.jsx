@@ -168,7 +168,8 @@ const styles = {
         justifyContent: 'center',
         height: '80vh',
         width: '100%',
-        backgroundColor: '#fff',
+        // backgroundColor: '#fff',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
         borderRadius: '10px',
         padding: '20px',
         marginBottom: '20px',
@@ -179,7 +180,8 @@ const styles = {
         width: '98%',
         height: '100%',
         overflowY: 'scroll',
-        scrollbarWidth: 'none'
+        scrollbarWidth: 'none',
+        backgroundColor: 'rgba(255, 255, 255, 0.8)',
     },
     card: {
         display: 'flex',
@@ -188,7 +190,7 @@ const styles = {
         justifyContent: 'center',
         width: '90%',
         margin: 'auto',
-        backgroundColor: '#f5f5f5',
+        // backgroundColor: '#f5f5f5',
         borderRadius: '10px',
         padding: '20px',
         height: 'auto',

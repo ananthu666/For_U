@@ -5,6 +5,7 @@ import RecieverTable from "../../Components/Receiver/Reciever_dash_table";
 import {database} from '../../firebase_config';
 import { collection, getDocs,query,where } from 'firebase/firestore';
 import { useLocation } from 'react-router-dom';
+import helphand from '../../assets/helphand.jpg';
 
 
 
@@ -92,7 +93,7 @@ const DashboardApp = () => {
     <div style={styles.maincont}>
       <div>
         <nav style={styles.nav}>
-          <h1>You are a Receiver</h1>
+          <h1 style={{marginLeft:"20px"}}>{mydetails.name}</h1>
           <ul style={styles.ul}>
             <button onClick={togglerprof} style={styles.btn}>Profile</button>
           </ul>
@@ -161,12 +162,17 @@ const styles = {
     flexDirection: 'column',
     height: '100vh',
     width: '100%',
+    backgroundImage: `url(${helphand})`,
+  backgroundRepeat: 'no-repeat',
+  backgroundSize: 'cover',
+  backgroundPosition: 'center',
+
   },
   nav: {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    backgroundColor: 'gray',
+    backgroundColor: '#cef0ef',
     color: 'black',
     fontWeight: 'bold',
     fontFamily: 'Arial',
@@ -186,7 +192,7 @@ const styles = {
     width: '100%',
     margin: 'auto',
     height: '10vh',
-    backgroundColor: '#97a2bd',
+    // backgroundColor: '#97a2bd',
   },
   dashcont: {
     // border: '1px solid red',
@@ -216,7 +222,7 @@ const styles = {
     margin: 'auto',
   },
   abovecont: {
-    backgroundColor: '#97a2bd',
+    // backgroundColor: '#97a2bd',
     height: '25vh',
     marginBottom: '20px',
     marginTop: '20px',
@@ -228,7 +234,7 @@ const styles = {
     height: '100%',
     flexWrap: 'wrap',
     // backgroundColor: '#6b7385',
-    backgroundColor: '#97a2bd',
+    // backgroundColor: 'transparent',
   },
   input: {
     padding: '10px',
@@ -257,7 +263,8 @@ const styles = {
     alignItems: 'center',
     height: '100%',
     flexWrap: 'wrap',
-    backgroundColor: 'white',
+    borderRadius: '15px',
+    backgroundColor: 'rgba(255,255,255,0.8)',
     width: '80%',
     margin: 'auto',
     maxWidth: '1200px', // Set maximum width for input forms container
@@ -270,11 +277,18 @@ const styles = {
     marginRight: '10px',
   },
   footer: {
-    backgroundColor: '#333',
-    color: 'white',
+    backgroundColor: '#cef0ef',
+    color: 'black',
     textAlign: 'center',
-    // padding: '3px',
-  },
+    // padding: '20px',
+    position: 'absolute',
+    bottom: '0',
+    width: '100%',
+    // height:"20px",
+    margin: '0',
+    justifyContent: 'center',
+    alignItems: 'center',
+},
 
 }
 
