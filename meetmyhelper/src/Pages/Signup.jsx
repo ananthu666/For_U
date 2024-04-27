@@ -149,12 +149,14 @@ const styles = {
     fontWeight: 'bold',
   },
   form: {
-    width: '30%',
+    width: '20%',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     padding: '20px',
     borderRadius: '10px',
     backgroundColor: 'rgba(255, 255, 255, 0.8)',
+    // backdropFilter: 'blur(-50px)',
+    marginTop: '60px',
   },
 };

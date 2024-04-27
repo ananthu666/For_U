@@ -220,13 +220,17 @@ const styles = {
     },
     outer: {
        
-        height: '80%',
-        backgroundImage: `url(${backgroundout})`,
-        backgroundSize: 'cover',
+        height: '85%',
+        backgroundImage: `url(${backgroundout})` ,
+        // backgroundSize: 'cover',
         position: 'relative',
-        bottom: '79px',
+        bottom: '90px',
         // left: '80px',
-
+        backgroundPosition: 'top',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        width: '100vw',
+        // height: '100vh'
         
     },
     
