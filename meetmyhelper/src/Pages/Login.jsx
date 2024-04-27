@@ -151,6 +151,7 @@ const styles = {
     loginForm: {
         textAlign: 'left',
         marginTop: '20px',
+        
     },
     input: {
         width: '90%',
@@ -159,6 +160,8 @@ const styles = {
         border: '1px solid #ccc',
         borderRadius: '5px',
         backgroundColor: 'lightgray',
+        color: 'black',
+        fontSize: '20px',
     },
     forgotPassword: {
         textAlign: 'left',

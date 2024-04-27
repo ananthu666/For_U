@@ -110,7 +110,7 @@ const styles = {
     border: '1px solid #ccc',
     borderRadius: '5px',
     backgroundColor: 'white',
-    color: 'grey',
+    color: 'black',
     fontWeight: 'bold',
     height: '5vh',
     fontSize: '20px',
