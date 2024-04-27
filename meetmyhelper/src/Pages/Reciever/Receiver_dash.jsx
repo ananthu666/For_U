@@ -24,7 +24,7 @@ const DashboardApp = () => {
     console.log("data",data);
     const arr = recdata.filter((item) => {
       for (let key in data) {
-        if (item[key] === undefined || item[key] !== data[key])
+        if (item[key] === undefined || item[key].trim() !== data[key].trim())
           return false;
       }
       return true;

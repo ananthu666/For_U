@@ -36,13 +36,17 @@ const Show_reviews = ({ myem,giverem }) => {
     const fetchreviews = async() => {
         try
         {
-            const unsubscribe = onSnapshot(collection(database, 'reviews'), (snapshot) => {
+            const q = query(collection(database, 'reviews'), where('giver_email', '==', giverem));
+
+            const unsubscribe = await onSnapshot(q, (snapshot) => {
                 const arr = [];
                 snapshot.forEach((doc) => {
                     arr.push(doc.data());
                 });
+                console.log("------",arr);
                 setreviews(arr);
             });
+        
             return unsubscribe;
         }
         catch(e)    

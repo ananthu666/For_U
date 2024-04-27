@@ -3,6 +3,7 @@ import Review_card from '../Receiver/Review_card';
 import { Button, Modal, Form, Input, Rate } from 'antd';
 import {database} from '../../firebase_config';
 import { collection, addDoc,getDocs,where,onSnapshot,query } from 'firebase/firestore';
+import Loader from '../Loader';
 
 const { TextArea } = Input;
 
@@ -16,7 +17,7 @@ const GiverReviews = ({ giverem }) => {
     const fetchreviews = async() => {
         try
         {
-            const q = query(collection(database, 'reviews'), where('giver_email', '==', "f@gmail.com"));
+            const q = query(collection(database, 'reviews'), where('giver_email', '==', giverem));
 
             const unsubscribe = await onSnapshot(q, (snapshot) => {
                 const arr = [];
@@ -49,18 +50,21 @@ const GiverReviews = ({ giverem }) => {
     console.log("review", reviews);
     return (
         <div style={styles.outercont}>
-            
-
-            <div style={styles.innercont}>
-            {reviews.map((review, index) => (
+        <div style={styles.innercont}>
+            {reviews.length === 0 ? (
+                <div style={styles.loader}>
+                <h1 style={{color:"blue"}}>No reviews</h1>
+                <Loader/>
+                </div>
+            ) : (
+                reviews.map((review, index) => (
                     <div key={index} style={styles.card}>
                         <Review_card review={review} />
                     </div>
-                ))}
-            </div>
-
-        
+                ))
+            )}
         </div>
+    </div>
     );
 }
 
@@ -148,6 +152,20 @@ const styles = {
         fontSize: '30px', // Increase font size
         fontWeight: 'bold', // Make title bold
         color: 'blue', // Change title color
+    },
+    loader: {
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100%',
+        width: '100%',
+        backgroundColor: '#fff',
+        borderRadius: '10px',
+        padding: '20px',
+        marginBottom: '20px',
+        marginTop: '20px',
+        boxShadow: '0 0 20px #ccc',
     },
      
 }
