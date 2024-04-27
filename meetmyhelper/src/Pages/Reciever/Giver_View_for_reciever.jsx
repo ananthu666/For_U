@@ -19,7 +19,7 @@ const GiverView = () => {
     return (
         <div style={styles.maincont}>
            <div style={styles.detail}>
-            <Reviewprofile giverdet={giverDetails}/>
+            <Reviewprofile giverdet={giverDetails} myem={state.myemail}/>
            </div>
            <div style={styles.review}>
            <Show_reviews myem={state.myemail} giverem={giverDetails.email}/> 

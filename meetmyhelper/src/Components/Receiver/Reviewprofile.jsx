@@ -2,31 +2,26 @@ import React from 'react';
 import { Button } from 'antd';
 import { useNavigate } from "react-router";
 
-const Review_profile = ({giverdet}) => {
+const Review_profile = ({ giverdet, myem }) => {
     const navigate = useNavigate();
-    console.log("giverdet====",giverdet);
+
     return (
         <div style={styles.outer}>
             <div style={styles.nameapo}>
-               
-            <h1 style={styles.heading}>{giverdet.fullName}</h1>
-            <div style={styles.apobtn}>
-            <Button onClick={() => navigate('/appoint')} style={styles.abtn}>Assign CareTaker</Button>
-
-            </div>
+                <h1 style={styles.heading}>{giverdet.fullName}</h1>
+                <Button onClick={() => navigate('/appoint', { state: { myem, giverdetEmail: giverdet.email,giverdetimage:giverdet.imageUrl,giverdetname:giverdet.fullName } })} style={styles.abtn}>Assign CareTaker</Button>
             </div>
             <div style={styles.imageBox}>
-                <img src={giverdet.imageUrl?giverdet.imageUrl:"https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"} alt="Profile" style={styles.image} />
+                <img src={giverdet.imageUrl ? giverdet.imageUrl : "https://t4.ftcdn.net/jpg/02/29/75/83/360_F_229758328_7x8jwCwjtBMmC6rgFzLFhZoEpLobB6L8.jpg"} alt="Profile" style={styles.image} />
             </div>
             <div style={styles.infoBox}>
                 <div style={styles.label}>Age:</div>
                 <div style={styles.value}>{giverdet.age}</div>
             </div>
             <div style={styles.infoBox}>
-                <div style={styles.label}>ContactNumber:</div>
+                <div style={styles.label}>Contact Number:</div>
                 <div style={styles.value}>{giverdet.contactNumber}</div>
             </div>
-            
             <div style={styles.infoBox}>
                 <div style={styles.label}>Experience:</div>
                 <div style={styles.value}>{giverdet.servicesOffered}</div>
@@ -43,8 +38,6 @@ const Review_profile = ({giverdet}) => {
                 <div style={styles.label}>Services:</div>
                 <div style={styles.value}>{giverdet.servicesOffered}</div>
             </div>
-            
-           
         </div>
     );
 }
@@ -63,7 +56,6 @@ const styles = {
         marginBottom: '20px',
         marginTop: '20px',
         boxShadow: '0 0 20px #ccc',
-        
     },
     heading: {
         marginBottom: '20px',
@@ -75,14 +67,13 @@ const styles = {
         justifyContent: 'space-between',
         width: '60%',
         marginBottom: '10px',
-        
     },
     label: {
         fontWeight: 'bold',
         marginRight: '10px',
         width: '100%',
         display: 'flex',
-        position:'relative',
+        position: 'relative',
         left: '0',
         fontSize: '20px',
     },
@@ -108,20 +99,8 @@ const styles = {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        width: '30%',
+        width: '60%',
         marginBottom: '10px',
-    },
-    apobtn: {
-        display: 'flex',
-        flexDirection: 'row',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        // width: '10%',
-        // marginBottom: '10px',
-        position: 'relative',
-        left: '10px',
-        bottom: '20px',
-        
     },
     abtn: {
         backgroundColor: 'grey',
@@ -131,12 +110,9 @@ const styles = {
         marginTop: '10px',
         fontSize: '14px',
         fontWeight: 'bold',
-        // paddingBottom: '32px',
         height: '40px',
-        width: '100%',
-        
+        width: '40%',
     }
-
 };
 
 export default Review_profile;
