@@ -5,6 +5,8 @@ import { getAuth,signInWithEmailAndPassword } from 'firebase/auth';
 import { collection, getDocs } from 'firebase/firestore';
 import { useNavigate } from "react-router";
 import { NavLink } from 'react-router-dom';
+import background from '../assets/hand.jpeg';
+import backgroundout from '../assets/hands.jpg';
 
 
 const Login = () => {
@@ -65,6 +67,8 @@ const Login = () => {
             <div>
                 <Navbar />
             </div>
+            <div style={styles.outer}>
+
             {/* <header style={styles.header}>
                 <div className="title">
                     <h1>Meet My Helper</h1>
@@ -97,6 +101,7 @@ const Login = () => {
                 <p>Don't have an account? <NavLink to="/register" style={styles.signUpLink}>Sign up</NavLink></p>
                 </div>
             </section>
+    </div>
             <footer style={styles.footer}>
                 <p>&copy; 2024 Meet My Helper. All rights reserved.</p>
             </footer>
@@ -109,7 +114,7 @@ export default Login;
 const styles = {
     header: {
         backgroundColor: '#f0f0f0',
-        padding: '20px',
+        // padding: '20px',
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
@@ -131,6 +136,9 @@ const styles = {
         padding: '20px',
         borderRadius: '10px',
         boxShadow: '0 0 10px rgba(0, 0, 0, 0.2)',
+        // backgroundImage: `url(${background})`,
+        position: 'relative',
+        top: '80px',
         
     },
     heading: {
@@ -206,6 +214,20 @@ const styles = {
         listStyle: 'none',
         margin: 0,
         padding: 0,
+    },
+    li:{
+        display: 'inline',
+    },
+    outer: {
+       
+        height: '80%',
+        backgroundImage: `url(${backgroundout})`,
+        backgroundSize: 'cover',
+        position: 'relative',
+        bottom: '79px',
+        // left: '80px',
+
+        
     },
     
 };

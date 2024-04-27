@@ -3,6 +3,7 @@ import background from '../assets/carepic.jpg';
 import { auth } from '../firebase_config';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import { useNavigate } from "react-router";
+import Navbar from '../Components/Navbar';
 const SignUp = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
@@ -43,22 +44,14 @@ const SignUp = () => {
 
   return (
     <>
-      <header style={styles.header}>
-        <div style={styles.title}>
-          <h1>Meet My Helper</h1>
-        </div>
-        <nav>
-          <ul style={styles.nav}>
-            <li><a href="index.html" style={styles.navLink}>Home</a></li>
-            <li><a href="/" style={styles.navLink}>Login</a></li>
-          </ul>
-        </nav>
-      </header>
+       <div>
+                <Navbar />
+            </div>
 
       <section style={styles.signupContainer}>
         {errorMessage && <div style={styles.ermsg}>{errorMessage}</div>}
         <h2 style={{color:'black'}}>Sign Up</h2>
-        <form className="signup-form" onSubmit={handleSignUp}>
+        <form style={styles.form} className="signup-form" onSubmit={handleSignUp}>
           <input type="text" name="email" id="email" placeholder="Email" value={email} onChange={(e) => setEmail(e.target.value)} style={styles.input} />
           <input type="password" name="password" id="password" placeholder="Password" value={password} onChange={(e) => setPassword(e.target.value)} style={styles.input} />
           <button type="submit" onClick={handleSignUp} style={styles.button}>Sign Up</button>
@@ -66,8 +59,8 @@ const SignUp = () => {
       </section>
 
       <footer style={styles.footer}>
-        <p>&copy; 2024 Meet My Helper. All rights reserved.</p>
-      </footer>
+                <p>&copy; 2024 Meet My Helper. All rights reserved.</p>
+            </footer>
     </>
   );
 };
@@ -103,12 +96,12 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
-    padding: '2rem',
+    // padding: '2rem',
     backgroundImage: `url(${background})`,
     backgroundSize: 'cover', // Cover the entire background
     backgroundPosition: 'center ' ,
     
-    height: '70vh', // Full height minus the header height
+    height: '80%', // Full height minus the header height
   },
   input: {
     width: '100%',
@@ -134,11 +127,18 @@ const styles = {
     transition: 'background-color 0.3s',
   },
   footer: {
-    backgroundColor: '#333',
-    color: 'white',
+    backgroundColor: '#cef0ef',
+    color: 'black',
     textAlign: 'center',
-    padding: '20px',
-  },
+    
+    position: 'absolute',
+    bottom: '0',
+    width: '100%',
+    
+    margin: '0',
+    justifyContent: 'center',
+    alignItems: 'center',
+},
   ermsg: {
     color: 'red',
     marginBottom: '20px',
@@ -147,5 +147,14 @@ const styles = {
     padding: '10px',
     fontSize: '20px',
     fontWeight: 'bold',
+  },
+  form: {
+    width: '30%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    padding: '20px',
+    borderRadius: '10px',
+    backgroundColor: 'rgba(255, 255, 255, 0.8)',
   },
 };
