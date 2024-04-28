@@ -68,7 +68,7 @@ const GiverApointAccept = ({ review }) => {
             <span style={styles.value}>{review.data.dailyDuration}</span>
           </div>
           <div style={styles.field}>
-            <label style={styles.label}>Hourly Price</label>
+            <label style={styles.label}>Hourly Salary</label>
             <span style={styles.value}>{review.data.hourlyPrice}</span>
           </div>
           <div style={styles.field}>
@@ -76,8 +76,8 @@ const GiverApointAccept = ({ review }) => {
             <span style={styles.value}>{review.data.location}</span>
           </div>
           <div style={styles.field}>
-            <label style={styles.label}>Client email</label>
-            <span style={styles.value}>{review.data.care_reciever_email}</span>
+            <label style={styles.label}>No Of Days </label>
+            <span style={styles.value}>{review.data.no_of_days}</span>
           </div>
         </div>
         <div style={styles.bodyright}>
@@ -185,13 +185,15 @@ export default GiverApointAccept;
     },
     value: {
       border: '1px solid #ccc',
-      padding: '5px',
+      padding: '6px',
       borderRadius: '5px',
       width: '70%',
       backgroundColor: '#f5f5f5',
       fontSize: '16px',
       fontWeight: 'bold',
       textAlign: 'center',
+      marginTop: '10px',
+
 
     },
     accbtn:

@@ -37,6 +37,7 @@ const Appoint = () => {
 
     const [formData, setFormData] = useState({
         dailyDuration: '',
+        no_of_days: '',
         hourlyPrice: '',
         advancePayment: '',
         typeOfWork: '',
@@ -57,6 +58,25 @@ const Appoint = () => {
             const docRef = await addDoc(collection(database, 'appointments'), formData);
             console.log("Document written with ID: ", docRef.id);
             message.success("Requested for service");
+            // clear form
+            setFormData({
+                dailyDuration: '',
+                no_of_days: '',
+                hourlyPrice: '',
+                advancePayment: '',
+                typeOfWork: '',
+                location: '',
+                care_reciever_email: state.myem,
+                care_reciever_name: state.myname,
+                care_reciever_image: state.myimage,
+                care_taker_email: state.giverdetEmail,
+                request_accepted: false,
+                request_rejected: false,
+                care_taker_name: state.giverdetname,
+                care_taker_image: state.giverdetimage,
+            });
+
+            
         } catch (e) {
             console.error("Error adding document: ", e);
         }
@@ -80,7 +100,11 @@ const Appoint = () => {
                             <input style={styles.input} type="text" name="dailyDuration" value={formData.dailyDuration} onChange={handleChange} />
                         </label>
                         <label style={styles.label}>
-                            Hourly Price:
+                            No of Days:
+                            <input style={styles.input} type="text" name="no_of_days" value={formData.no_of_days} onChange={handleChange} />
+                        </label>
+                        <label style={styles.label}>
+                            Hourly Salary:
                             <input style={styles.input} type="text" name="hourlyPrice" value={formData.hourlyPrice} onChange={handleChange} />
                         </label>
                         <label style={styles.label}>
@@ -95,7 +119,7 @@ const Appoint = () => {
                             Location:
                             <input style={styles.input} type="text" name="location" value={formData.location} onChange={handleChange} />
                         </label>
-                        <button style={styles.bidbtn} type="submit">Submit Bid</button>
+                        <button style={styles.bidbtn} type="submit">Submit</button>
                     </form>
                 </div>
             </div>
@@ -157,6 +181,7 @@ const styles = {
         backgroundSize: 'cover',
         backgroundPosition: 'center',
         backgroundRepeat: "no-repeat",
+
     },
     inner1: {
         display: 'flex',
@@ -192,6 +217,7 @@ const styles = {
         marginTop: '20px',
     },
     appointbox: {
+        
         backgroundColor: 'rgba(255, 255, 255, 0.5)',
         padding: '20px',
         borderRadius: '10px',
@@ -293,5 +319,18 @@ const styles = {
     cardbody: {
         padding: '10px',
         
+    },
+    bidbtn: {
+        padding: '10px',
+        margin: '10px',
+        backgroundColor: '#443157',
+        color: 'white',
+        borderRadius: '10px',
+        border: 'none',
+        cursor: 'pointer',
+        fontSize: '20px',
+        position: 'relative',
+        left: '105%',
+        top: '-24%'
     },
 }

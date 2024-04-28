@@ -89,7 +89,7 @@ const styles = {
         justifyContent: 'center',
         height: '70vh',
         // width: '80%',
-        backgroundColor: '#fff',
+        // backgroundColor: '#fff',
         borderRadius: '10px',
         padding: '20px',
         // marginBottom: '20px',

@@ -47,26 +47,18 @@ const Giver_dash = () => {
             </div>
             <div className="pages-container">
                 {/* Profile Page */}
-                {activePage === 'profile' && (
-                    <div key="profile" style={{ ...styles.page, ...styles.detail }}>
-                        <Giverprofile myemail={currentUser} />
-                    </div>
-                )}
+                <div key="profile" style={{ ...styles.page, ...styles.detail, visibility: activePage === 'profile' ? 'visible' : 'hidden', opacity: activePage === 'profile' ? 1 : 0 }}>
+                    <Giverprofile myemail={currentUser} />
+                </div>
                 {/* Reviews Page */}
-                {activePage === 'reviews' && (
-                    <div key="reviews" style={{ ...styles.page, ...styles.review }}>
-                        <Giverreviews giverem={currentUser} />
-                    </div>
-                )}
+                <div key="reviews" style={{ ...styles.page, ...styles.review, visibility: activePage === 'reviews' ? 'visible' : 'hidden', opacity: activePage === 'reviews' ? 1 : 0 }}>
+                    <Giverreviews giverem={currentUser} />
+                </div>
                 {/* Appointments Page */}
-                {activePage === 'appointments' && (
-                    <div key="appointments" style={{ ...styles.page, ...styles.apoint }}>
-                        <GiverApoints giverem={currentUser} />
-                    </div>
-                )}
+                <div key="appointments" style={{ ...styles.page, ...styles.apoint, visibility: activePage === 'appointments' ? 'visible' : 'hidden', opacity: activePage === 'appointments' ? 1 : 0 }}>
+                    <GiverApoints giverem={currentUser} />
+                </div>
             </div>
-            {/* Buttons to switch between pages */}
-            
         </div>
     );
 };
@@ -79,47 +71,43 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '100vh',
-        // backgroundColor: '#f0f0f0',
-        overflowX: 'scroll',
-        // backgroundColor:"greeen"
+        height: '100%',
+        // overflowX: 'scroll',
     },
     page: {
-        // backgroundColor:"yellow",
-        width: '100%',
-        transition: 'transform 0.3s ease-in-out',
-        // height:'100%'
+        maxWidth: '90%',
+        maxHeight: '90%',
+        transition: 'opacity 0.3s ease-in-out',
+        // margin: '10px',
     },
     detail: {
-        transform: 'translateX(0)',
         position: 'absolute',
         top: '15%',
         left: '10%',
-        width:"80%"
+        width: '80%',
     },
     review: {
-        transform: 'translateX(-100%)',
         position: 'absolute',
         top: '10%',
-        left: '100%',
+        left: '10%',
+        width: '80%',
+        
     },
     apoint: {
-        transform: 'translateX(-200%)',
         position: 'absolute',
         top: '6%',
-        left: '197%',
-        
+        left: '4%',
+        width: '100%',
     },
     buttons: {
-        
-        backgroundColor:"#cef0ef",
-        position:"fixed",
-        top:'0',
-        width:"100%",
+        backgroundColor: "#cef0ef",
+        position: "fixed",
+        top: '0',
+        width: "100%",
         display: 'flex',
         flexDirection: 'row',
         alignItems: 'center',
-        justifyContent: 'space-around',
+        justifyContent: 'right',
         height: '10%',
     },
     btn: {
