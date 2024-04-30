@@ -93,10 +93,10 @@ const Login = () => {
                     </div>
                     <button type='submit' onClick={handlelogin} style={styles.button}>Login</button>
                 </form>
-                <button className="google-btn" onClick={() => window.location.href = 'choice.html'} style={styles.googleButton}>
+                {/* <button className="google-btn" onClick={() => window.location.href = 'choice.html'} style={styles.googleButton}>
                     <i className="fab fa-google"></i> Sign in with Google
                     
-                </button>
+                </button> */}
                 <div className="sign-up" style={styles.signUp}>
                 <p>Don't have an account? <NavLink to="/register" style={styles.signUpLink}>Sign up</NavLink></p>
                 </div>
