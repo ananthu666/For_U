@@ -63,6 +63,7 @@ const Recieverprevdash=()=>{
                     <div >
                         <img style={styles.propic}src={ mydetails.imageUrl?mydetails.imageUrl:"https://cdni.iconscout.com/illustration/premium/thumb/female-user-image-8110250-6515859.png?f=webp"} alt="" />
                         <label style={styles.proname} htmlFor="text">{mydetails.name}</label>
+                        <div style={styles.header}>Care  Receiver</div>
                     </div>
 
                 </div>
@@ -167,5 +168,14 @@ const styles={
         alignItems:'center',
         // marginTop:'40px',
         // marginBottom:'90px',
+    },
+    header:{
+        color:'white',
+        fontSize:'20px',
+        fontWeight:'bold',
+        display:'flex',
+        justifyContent:'center',
+        alignItems:'center',
+        marginTop:'10px',
     }
 }

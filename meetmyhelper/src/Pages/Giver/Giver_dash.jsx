@@ -187,6 +187,7 @@ const Giver_dash=()=>{
                     <div >
                         <img style={styles.propic}src={ mydetails.imageUrl?mydetails.imageUrl:"https://cdni.iconscout.com/illustration/premium/thumb/female-user-image-8110250-6515859.png?f=webp"} alt="" />
                         <label style={styles.proname} htmlFor="text">{mydetails.fullName}</label>
+                        <div style={styles.header}>Care  Giver</div>
                     </div>
 
                 </div>
@@ -291,5 +292,12 @@ const styles={
         backgroundPosition: 'top',
         // marginTop:'40px',
         // marginBottom:'90px',
+    },
+    header:{
+        textAlign:'center',
+        color:'white',
+        fontSize:'20px',
+        fontWeight:'bold',
+        marginTop:'10px',
     }
 }

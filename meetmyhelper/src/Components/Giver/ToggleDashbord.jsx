@@ -3,6 +3,7 @@ import { database } from '../../firebase_config';
 import { collection, addDoc, onSnapshot, where,deleteDoc,doc,query,getDocs } from 'firebase/firestore';
 import { useNavigate } from 'react-router-dom';
 import trash from '../../assets/icons/trash.png';
+import add  from '../../assets/icons/add.png';
 
 const ToggleDashboard = ({ myemail, myname }) => {
 
@@ -206,7 +207,7 @@ const ToggleDashboard = ({ myemail, myname }) => {
             <div style={styles.upper}>
                 <div style={styles.left}>
                     <div style={styles.head}>
-                        <div style={styles.plusbtn} onClick={toggleMedModal}>+</div>
+                        <div style={styles.plusbtn} onClick={toggleMedModal}></div>
                         <div style={styles.name}>Medicines To Take</div>
                     </div>
 
@@ -239,7 +240,7 @@ const ToggleDashboard = ({ myemail, myname }) => {
                 <div style={styles.right}>
                     <div style={styles.head}>
                         
-                        <div style={styles.plusbtn} onClick={toggleExeModal}>+</div>
+                        <div style={styles.plusbtn} onClick={toggleExeModal}></div>
                         <div style={styles.name}>Exercises To Do</div>
                     </div>
 
@@ -272,7 +273,7 @@ const ToggleDashboard = ({ myemail, myname }) => {
             </div>
             <div style={styles.lower}>
             <div style={styles.head}>
-                    <div style={styles.plusbtn} onClick={toggleHealthModal}>+</div>
+                    <div style={styles.plusbtn} onClick={toggleHealthModal}></div>
                     <div style={styles.name}>Health Datas</div>
                 </div>
                 <div style={styles.lowerbody}>
@@ -418,19 +419,26 @@ const styles ={
         padding:'5px',
     },
     plusbtn:{
-        display:'flex',
+        // display:'flex',
+        // width:'40px',
+        // height:'30px',
+        // backgroundColor:'purple',
+        backgroundImage:'url('+add+')',
+        backgroundSize:'cover',
         width:'40px',
-        height:'30px',
-        backgroundColor:'purple',
+        height:'40px',
+
+
         position:'relative',
-        left:'90%',
-        top:"-20%",
-        alignItems:'center',
-        justifyContent:'center',
-        fontSize:'90px',
-        paddingBottom:'20px',
-        borderRadius:'50%',
-        color:'white',
+        left:'91.5%',
+
+        
+        // alignItems:'center',
+        // justifyContent:'center',
+        // fontSize:'90px',
+        // paddingBottom:'20px',
+        // borderRadius:'50%',
+        // color:'white',
         cursor:'pointer',
     },
     name:{
