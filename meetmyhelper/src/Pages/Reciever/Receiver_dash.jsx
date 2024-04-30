@@ -5,16 +5,16 @@ import RecieverTable from "../../Components/Receiver/Reciever_dash_table";
 import {database} from '../../firebase_config';
 import { collection, getDocs,query,where } from 'firebase/firestore';
 import { useLocation } from 'react-router-dom';
-import helphand from '../../assets/helphand.jpg';
+// import helphand from '../../assets/helphand.jpg';
+import helphand from '../../assets/back.png'
 
 
-
-const DashboardApp = () => {
-  const {state}=useLocation();
-  const [showProfile, setShowProfile] = useState(false); // State to manage visibility of profile
+const DashboardApp = ({mydetails}) => {
+  // const {mydetails}=useLocation();
+  
   const [recdata, setRecdata] = useState([]); // State to store data from the database
   const [filtereddata, setFiltereddata] = useState([]);
-  const [mydetails, setmydetails] = useState([]);
+  
   const inputsearch = () => {
     const formvalues = document.querySelectorAll('input');
     const data = {};
@@ -34,31 +34,7 @@ const DashboardApp = () => {
     setFiltereddata(arr);
     console.log('filtereddata',filtereddata);
   }
-    const fetchmydetails = async() => {
-        try
-        {
-            const querySnapshot = await getDocs(
-                query(collection(database, 'carereceivers'), where("email", "==", state.email))
-                // Use 'query' to create a query with a filter using 'where'
-            );
-            const arr = [];
-            querySnapshot.forEach((doc) => {
-                arr.push(doc.data());
-            });
-            setmydetails(arr[0]);
-        }
-        catch(e)
-        {
-            console.log(e);
-        }
-    }
-
-    useEffect(() =>
-    {
-        fetchmydetails();
-    }
-    , []); // Empty dependency array
-
+   
 
   const fetchthegivers =async()=> {
    try
@@ -84,20 +60,13 @@ const DashboardApp = () => {
     fetchthegivers();
   }
   , []); // Empty dependency array
-  console.log('recdata',recdata);
-  const togglerprof = () => {
-    setShowProfile(!showProfile); // Toggle the state on button click
-  }
+  
+  
   
   return (
     <div style={styles.maincont}>
       <div>
-        <nav style={styles.nav}>
-          <h1 style={{marginLeft:"20px"}}>{mydetails.name}</h1>
-          <ul style={styles.ul}>
-            <button onClick={togglerprof} style={styles.btn}>Profile</button>
-          </ul>
-        </nav>
+       
       </div>
       <div style={styles.content}>
         <div style={styles.dashcont}>
@@ -140,18 +109,15 @@ const DashboardApp = () => {
             </div>
           </div>
           <div style={styles.tablecont}>
-          <RecieverTable tabdat={filtereddata.length!=0 ? filtereddata:recdata } myemail={state.email} mydet={{name:mydetails.name,imageurl:mydetails.imageUrl}}/>
+          <RecieverTable tabdat={filtereddata.length!=0 ? filtereddata:recdata } myemail={mydetails.email} mydet={{name:mydetails.name,imageurl:mydetails.imageUrl}}/>
           
 
           </div>
         </div>
-        <div style={{ ...styles.rprofile, visibility: showProfile ? 'visible' : 'hidden' }}>
-          <Rprofile mydetails={mydetails}/>
-        </div>
       </div>
-      <footer style={styles.footer}>
+      {/* <footer style={styles.footer}>
                  <p>&copy; 2024 Meet My Helper. All rights reserved.</p>
-            </footer>
+            </footer> */}
     </div>
   );
 }
@@ -161,23 +127,25 @@ const styles = {
     display: 'flex',
     flexDirection: 'column',
     height: '100vh',
-    width: '100%',
+    width: '80%',
     backgroundImage: `url(${helphand})`,
   backgroundRepeat: 'no-repeat',
   backgroundSize: 'cover',
-  backgroundPosition: 'center',
+  backgroundPosition: 'top',
+  position: 'absolute',
+  top: '0',
 
   },
-  nav: {
-    display: 'flex',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    backgroundColor: '#cef0ef',
-    color: 'black',
-    fontWeight: 'bold',
-    fontFamily: 'Arial',
-    height: '12vh',
-  },
+  // nav: {
+  //   display: 'flex',
+  //   justifyContent: 'space-between',
+  //   alignItems: 'center',
+  //   backgroundColor: '#cef0ef',
+  //   color: 'black',
+  //   fontWeight: 'bold',
+  //   fontFamily: 'Arial',
+  //   height: '12vh',
+  // },
   btn: {
     border: '1px solid black',
     padding: '10px',
@@ -191,48 +159,43 @@ const styles = {
     display: 'flex',
     width: '100%',
     margin: 'auto',
-    height: '10vh',
+    // height: '10vh',
     // backgroundColor: '#97a2bd',
   },
   dashcont: {
     // border: '1px solid red',
     // backgroundColor: 'yellow',
-    flex: 1, // Take up the remaining space
+    // flex: 1, // Take up the remaining space
     // marginTop: '10px',
-    height: '80vh',
+    // height: '100vh',
     width: '100%',
+  
     
   },
-  rprofile: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: '#f2f2f2',
-    width: '300px',
-    height: '80vh',
-    transition: 'right 0.5s ease',
-    position: 'absolute',
-    top: '40px',
-    right: '110px',
-    zIndex: '100',
-    
-  },
+  
   tablecont: {
     width: '90%',
     margin: 'auto',
+    // height: '100%',
+    
   },
   abovecont: {
     // backgroundColor: '#97a2bd',
-    height: '25vh',
+    height: '35vh',
     marginBottom: '20px',
-    marginTop: '20px',
+    marginTop: '10px',
+    display:'flex',
+    
+    alignItems:'center',
+    
   },
   form: {
     display: 'flex',
-    justifyContent: 'center',
+    justifyContent: 'space-between',
     alignItems: 'center',
     height: '100%',
     flexWrap: 'wrap',
+    padding: '10px',
     // backgroundColor: '#6b7385',
     // backgroundColor: 'transparent',
   },

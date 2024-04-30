@@ -5,7 +5,7 @@ import {database} from '../../firebase_config';
 import { collection, addDoc,getDocs,where,onSnapshot,query } from 'firebase/firestore';
 import Loader from '../Loader';
 import GiverApointAccept from './GiverApointAccept';
-import supp from '../../assets/supp.png';
+import supp from '../../assets/carepic.jpg';
 
 const { TextArea } = Input;
 

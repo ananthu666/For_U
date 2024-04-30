@@ -37,7 +37,7 @@ const Login = () => {
                         console.log("ids",ids);
                         if(ids.includes(email))
                         {
-                            navigate('/rdash',{state:{email}});
+                            navigate('/recieverprevdash',{state:{email}});
                             
                         }
                         else

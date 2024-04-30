@@ -12,6 +12,7 @@ import Rdash from './Pages/Reciever/Receiver_dash'
 import Gdash from './Pages/Giver/Giver_dash'
 import GiverView from './Pages/Reciever/Giver_View_for_reciever'
 import Appoint from './Components/Receiver/Appoint'
+import Recieverprevdash from './Components/Receiver/Recieverprevdash'
 
 
 function App() {
@@ -32,6 +33,7 @@ function App() {
       <Route path="/gdash" element={<Gdash/>}></Route>
       <Route path="/gviewforr" element={<GiverView/>}></Route>
       <Route path="/appoint" element={<Appoint/>}></Route>
+      <Route path="/recieverprevdash" element={<Recieverprevdash/>}></Route>
 
 
       

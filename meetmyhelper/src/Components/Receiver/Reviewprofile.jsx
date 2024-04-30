@@ -59,7 +59,8 @@ const styles = {
         boxShadow: '0 0 20px #ccc',
     },
     heading: {
-        marginBottom: '20px',
+        // marginBottom: '20px',
+        
     },
     infoBox: {
         display: 'flex',
@@ -88,7 +89,7 @@ const styles = {
         fontWeight: 'bold',
     },
     imageBox: {
-        marginTop: '20px',
+        // marginTop: '20px',
         marginBottom: '20px',
     },
     image: {
@@ -100,8 +101,9 @@ const styles = {
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        width: '60%',
-        marginBottom: '10px',
+        width: '80%',
+        height: '90px',
+        // marginBottom: '10px',
     },
     abtn: {
         backgroundColor: 'grey',

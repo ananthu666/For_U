@@ -110,7 +110,7 @@ export default GiverApointAccept;
       // backgroundColor: '#ffffff',
       borderRadius: '30px',
       boxShadow: '0 0 20px #ccc',
-      backgroundColor: 'rgba(53, 83, 110, 0.81)', 
+      backgroundColor: 'rgba(53, 83, 110, 0.9)', 
       // filter: 'blur(8px)', // Corrected value for blur filter
       // WebkitFilter: 'blur(8px)' // Vendor prefix for WebKit browsers
     },    
@@ -201,6 +201,7 @@ export default GiverApointAccept;
       width:"50px",
       height:"80px",
       // marginRight: "0px",
+      
     },
     fieldbtn:
     {
@@ -214,6 +215,8 @@ export default GiverApointAccept;
       position: "relative",
       left: "-10%",
       mouse: "pointer",
+      fontSize: '24px',
+      fontWeight: 'bold',
     },
     fieldbtn2:
     {
@@ -227,6 +230,9 @@ export default GiverApointAccept;
       // backgroundColor:"yellow",
       position: "relative",
       left: "10%",
+      
+      fontSize: '24px',
+      fontWeight: 'bold',
     },
     accp:
     {

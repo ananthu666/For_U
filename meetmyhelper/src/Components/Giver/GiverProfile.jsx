@@ -3,9 +3,10 @@ import Loader from '../Loader';
 import {useState,useEffect} from 'react';
 import { database } from '../../firebase_config';
 import { collection, onSnapshot, query, where,doc } from 'firebase/firestore';
-import prof from '../../assets/prof.jpg';
+import prof from '../../assets/prof2.jpeg';
 const Giverprofile = ({myemail}) => {
     const [giverdet, setgiverdet] = useState([]);
+    
     const FetchUserdata = async () => {
         try {
             const arr = [];
@@ -87,8 +88,8 @@ const styles = {
         flexDirection: 'column',
         alignItems: 'center',
         justifyContent: 'center',
-        height: '70vh',
-        // width: '80%',
+        height: '80vh',
+        width: '90%',
         // backgroundColor: '#fff',
         borderRadius: '10px',
         padding: '20px',
@@ -98,8 +99,9 @@ const styles = {
         backgroundImage: `url(${prof})`,
         backgroundRepeat: 'no-repeat',
         backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        backgroundPosition: 'top',
         color: 'black',
+
         
     },
     heading: {
@@ -121,16 +123,22 @@ const styles = {
     label: {
         fontWeight: 'bold',
         marginRight: '10px',
-        width: '100%',
+        width: '65%',
         display: 'flex',
         position:'relative',
         left: '0',
-        fontSize: '25px',
+        fontSize: '30px',
+        // color:"#653ffc",
+        backgroundColor: 'rgba(255,255,255,0.7)',
+        borderRadius: '10px',
+        
+        
+
     },
     value: {
         border: '1px solid #ccc',
         padding: '5px',
-        borderRadius: '5px',
+        borderRadius: '10px',
         width: '100%',
         backgroundColor: '#f5f5f5',
         fontSize: '20px',
@@ -145,6 +153,7 @@ const styles = {
     image: {
         borderRadius: '80%',
         height: '150px',
+        border: '1px solid white',
     },
     imandname: {
         display: 'flex',

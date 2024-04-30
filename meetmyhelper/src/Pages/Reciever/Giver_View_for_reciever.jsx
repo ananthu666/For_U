@@ -4,7 +4,7 @@ import Show_reviews from '../../Components/Receiver/Show_reviews';
 import chain from '../../assets/chain.jpg';
 const GiverView = () => {
     const { state } = useLocation();
-    console.log("state>>>", state);
+    // console.log("state>>>", state);
 
     if (!state || !state.e) {
         return (
