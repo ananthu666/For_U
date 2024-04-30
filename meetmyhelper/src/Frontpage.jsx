@@ -25,10 +25,13 @@ const Frontpage = () => {
         <ParallaxLayer offset={1} speed={1} style={styles.mid} />
         <ParallaxLayer offset={2} speed={1} style={styles.offend} />
 
-
-        <ParallaxLayer offset={1.3} speed={-0.3} style={{ pointerEvents: 'none' }}>
-          <img src={sponge} style={{ width: '25%', marginLeft: '70%' ,borderRadius:'30%'}} />
+        <ParallaxLayer offset={1.3} speed={-0.1} style={{ pointerEvents: 'none' }}>
+          <div style={styles.sponge}>
+            {/* <img src={sponge} style={{ width: '25%', marginLeft: '70%' ,borderRadius:'10%'}} /> */}
+            Find the perfect helper for your every need
+            </div>
         </ParallaxLayer>
+
 
         <ParallaxLayer offset={1} speed={0.8} style={{ opacity: 0.1 }}>
           <img src={leaf} style={{ display: 'block', width: '20%', marginLeft: '55%' }} />
@@ -60,7 +63,12 @@ const Frontpage = () => {
           offset={1}
           speed={1.5}
           style={styles.globe}
-          />
+          >
+            <div style={styles.globetex}>
+
+            Help is here, whenever you need it
+            </div>
+          </ParallaxLayer>
           
         
 
@@ -134,7 +142,7 @@ const styles={
     backgroundImage: 'url(' +globe + ')',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    borderRadius: '50%',
+    borderRadius: '10%',
     position: 'relative',
     top: '-35%',
   },
@@ -220,6 +228,42 @@ const styles={
     backgroundImage: 'url(' +eat + ')',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
+  },
+  sponge:{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '40vh',
+    width: '40%',
+    position: 'relative',
+    left: '50%',
+    borderRadius: '2px',
+    backgroundImage: 'url(' +sponge + ')',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    opacity: '0.6',
+    color: 'red',
+    fontWeight: 'bold',
+    fontSize: '30px',
+  },
+  globetex:{
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    height: '40vh',
+    width: '80%',
+    position: 'relative',
+    left: '20%',
+    top: '40%',
+    borderRadius: '2px',
+    // backgroundImage: 'url(' +globe + ')',
+    // backgroundSize: 'cover',
+    // backgroundPosition: 'center',
+    opacity: '0.5',
+    color: 'black',
+    fontWeight: 'bold',
+    fontSize: '30px',
+    texalign: 'center',
   },
   
 }
