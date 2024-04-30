@@ -39,9 +39,9 @@ function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/contact" style={styles.link} activeStyle={styles.activeLink}>
+            {/* <NavLink to="/contact" style={styles.link} activeStyle={styles.activeLink}>
               Contact
-            </NavLink>
+            </NavLink> */}
           </li>
           <li>
             <NavLink to="/" style={styles.link} activeStyle={styles.activeLink}>
