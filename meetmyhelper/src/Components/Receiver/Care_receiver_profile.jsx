@@ -64,7 +64,7 @@ const CarereceiverProfile = ({eandp}) => {
       const docRef = setDoc(documentRef, data);
       console.log("Document written with ID: ", docRef);
       message.success("Profile created successfully");
-      navigate("/");
+      navigate("/login");
 
     }
     catch(e){

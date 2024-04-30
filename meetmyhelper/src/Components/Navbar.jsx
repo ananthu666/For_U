@@ -17,7 +17,7 @@ function Navbar() {
         console.error(error);
       });
 
-    navigate('/');
+    navigate('/login');
   };
 
   return (
@@ -28,6 +28,11 @@ function Navbar() {
       </div>
       <nav style={styles.nav}>
         <ul style={styles.ul}>
+          <li>
+            <NavLink to="/" style={styles.link} activeStyle={styles.activeLink}>
+              Home
+            </NavLink>
+          </li>
           <li>
             <NavLink to="/about" style={styles.link} activeStyle={styles.activeLink}>
               About
@@ -44,7 +49,7 @@ function Navbar() {
             </NavLink> */}
           </li>
           <li>
-            <NavLink to="/" style={styles.link} activeStyle={styles.activeLink}>
+            <NavLink to="/login" style={styles.link} activeStyle={styles.activeLink}>
               Login
             </NavLink>
           </li>

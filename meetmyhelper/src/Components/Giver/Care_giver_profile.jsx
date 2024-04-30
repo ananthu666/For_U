@@ -62,7 +62,7 @@ const CaregiverProfile = ({eandp}) => {
     if(documentRef)
     {
       message.success("Profile created successfully");
-      navigate("/");
+      navigate("/login");
       
 
     }

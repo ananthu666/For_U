@@ -14,6 +14,7 @@ import GiverView from './Pages/Reciever/Giver_View_for_reciever'
 import Appoint from './Components/Receiver/Appoint'
 import Recieverprevdash from './Components/Receiver/Recieverprevdash'
 import { auth } from './firebase_config'
+import Frontpage from './Frontpage'
 
 function App() {
   const [user, setUser] = useState(null);
@@ -32,7 +33,8 @@ function App() {
       <BrowserRouter>
         <Routes>
           {/* Public routes */}
-          <Route path="/" element={<Login />} />
+          <Route path="/" element={<Frontpage />} />
+          <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Signup />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
@@ -40,6 +42,8 @@ function App() {
           {/* Routes accessible without authentication */}
           {!user && (
             <>
+              
+              <Route path="/" element={<Frontpage />} />
               <Route path="/login" element={<Login />} />
               <Route path="/register" element={<Signup />} />
               <Route path="/about" element={<About />} />

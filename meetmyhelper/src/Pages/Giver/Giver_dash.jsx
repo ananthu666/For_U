@@ -148,7 +148,7 @@ const Giver_dash=()=>{
     {
         console.log("LOG clickeed");
         auth.signOut();
-        navigate("/");
+        navigate("/login");
 
     }
     const fetchmydetails = async() => {
