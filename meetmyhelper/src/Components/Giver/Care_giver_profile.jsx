@@ -21,6 +21,7 @@ const CaregiverProfile = ({eandp}) => {
     event.preventDefault(); 
     const formvalues = document.querySelectorAll('input, textarea');
     const data = {};
+    data['imageUrl'] = '';
     const storage = getStorage();
     if(fileList.length > 0)
     {

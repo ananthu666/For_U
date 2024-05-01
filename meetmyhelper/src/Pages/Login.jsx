@@ -89,7 +89,7 @@ const Login = () => {
                     <input type="text" id="email" placeholder="User ID" style={styles.input} />
                     <input type="password" id="password" placeholder="Password" style={styles.input} />
                     <div className="forgot-password">
-                        <a href="forgot.html" style={styles.forgotPassword}><i className="fas fa-question-circle"></i> Forgot Password?</a>
+                        <a href="/forgot" style={styles.forgotPassword}><i className="fas fa-question-circle"></i> Forgot Password?</a>
                     </div>
                     <button type='submit' onClick={handlelogin} style={styles.button}>Login</button>
                 </form>

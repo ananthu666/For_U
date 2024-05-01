@@ -35,6 +35,7 @@ const CarereceiverProfile = ({eandp}) => {
       
     });
     const storage = getStorage();
+    data['imageUrl'] = '';  
     if(fileList.length > 0)
     {
       try

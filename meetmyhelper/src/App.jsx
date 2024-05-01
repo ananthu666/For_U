@@ -15,6 +15,7 @@ import Appoint from './Components/Receiver/Appoint'
 import Recieverprevdash from './Components/Receiver/Recieverprevdash'
 import { auth } from './firebase_config'
 import Frontpage from './Frontpage'
+import Forgot from './Pages/Forgot' 
 
 function App() {
   const [user, setUser] = useState(null);
@@ -38,24 +39,12 @@ function App() {
           <Route path="/register" element={<Signup />} />
           <Route path="/about" element={<About />} />
           <Route path="/services" element={<Services />} />
-
-          {/* Routes accessible without authentication */}
-          {!user && (
-            <>
-              
-              <Route path="/" element={<Frontpage />} />
-              <Route path="/login" element={<Login />} />
-              <Route path="/register" element={<Signup />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/services" element={<Services />} />
-            </>
-          )}
+          <Route path="/forgot" element={<Forgot />} />
 
           {/* Routes accessible only when authenticated */}
           {user && (
             <>
-            
-            <Route path="/choices" element={<Choice />} />
+              <Route path="/choices" element={<Choice />} />
               <Route path="/cgp" element={<Care_taker />} />
               <Route path="/crp" element={<Care_reciever />} />
               <Route path="/rdash" element={<Rdash />} />
