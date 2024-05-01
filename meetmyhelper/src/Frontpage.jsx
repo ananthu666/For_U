@@ -21,16 +21,15 @@ const Frontpage = () => {
       <div style={styles.parall}>
 
       <Parallax ref={parallax} pages={3}>
-        <ParallaxLayer offset={0} speed={1} style={styles.off1} />
-        <ParallaxLayer offset={1} speed={1} style={styles.mid} />
-        <ParallaxLayer offset={2} speed={1} style={styles.offend} />
 
-        <ParallaxLayer offset={1.3} speed={-0.1} style={{ pointerEvents: 'none' }}>
+        <ParallaxLayer offset={1} speed={-0.01} style={{ pointerEvents: 'none' }}>
           <div style={styles.sponge}>
             {/* <img src={sponge} style={{ width: '25%', marginLeft: '70%' ,borderRadius:'10%'}} /> */}
             Find the perfect helper for your every need
             </div>
         </ParallaxLayer>
+        <ParallaxLayer offset={0} speed={1} style={styles.off1} />
+        <ParallaxLayer offset={1} speed={1} style={styles.mid} />
 
 
         <ParallaxLayer offset={1} speed={0.8} style={{ opacity: 0.1 }}>
@@ -82,6 +81,7 @@ const Frontpage = () => {
 
         
 
+        <ParallaxLayer offset={2} speed={1} style={styles.offend} />
         <ParallaxLayer
           offset={2}
           speed={0}
