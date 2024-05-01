@@ -6,6 +6,7 @@ import { collection, addDoc,getDocs,where,onSnapshot,query } from 'firebase/fire
 import Loader from '../Loader';
 import fam from '../../assets/fam.jpg';
 
+
 const { TextArea } = Input;
 
 const GiverReviews = ({ giverem }) => {
@@ -79,7 +80,7 @@ const styles = {
         justifyContent: 'center',
         height: '76vh',
         width: '93%',
-        backgroundColor: '#fff',
+        // backgroundColor: '#fff',
         borderRadius: '10px',
         padding: '20px',
         marginBottom: '20px',
@@ -92,10 +93,10 @@ const styles = {
         overflowY: 'scroll',
         scrollbarWidth: 'none',
         // backgroundColor:"red",
-        backgroundImage: `url(${fam})`,
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
+        // backgroundImage: `url(${fam})`,
+        // backgroundRepeat: 'no-repeat',
+        // backgroundSize: 'cover',
+        // backgroundPosition: 'center',
         
 
 

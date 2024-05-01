@@ -110,7 +110,8 @@ export default GiverApointAccept;
       // backgroundColor: '#ffffff',
       borderRadius: '30px',
       boxShadow: '0 0 20px #ccc',
-      backgroundColor: 'rgba(53, 83, 110, 0.9)', 
+      // backgroundColor: 'rgba(53, 83, 110, 0.9)', 
+      backgroundColor: 'rgba(255, 255, 255, 0.7)', 
       // filter: 'blur(8px)', // Corrected value for blur filter
       // WebkitFilter: 'blur(8px)' // Vendor prefix for WebKit browsers
     },    
@@ -201,6 +202,7 @@ export default GiverApointAccept;
       width:"50px",
       height:"80px",
       // marginRight: "0px",
+      cursor: "pointer",
       
     },
     fieldbtn:
